@@ -1,0 +1,20 @@
+1- public void login(String username, String password){
+    WebDriver driver = getDriver();
+    String URL = "http:// + username + ":" + password + "@" + "link/url";
+    driver.get(URL);
+    driver.manage().window().maximize();
+}
+
+2-
+http://sqa.stackexchange.com/questions/12892/how-to-send-basic-authentication-headers-in-selenium
+
+3- chrome://version/  -- profile path
+
+
+DesiredCapabilities capability = DesiredCapabilities.chrome();
+ System.setProperty("webdriver.chrome.driver", "C:/chromedriver.exe");
+  capability.setCapability("chrome.switches", Arrays.asList("–disable-extensions"));
+   --capability.setCapability("chrome.binary", "C:/Users/user_name/AppData/Local/Google/Chrome/Application/chrome.exe"); 
+   ChromeOptions options = new ChromeOptions();
+    --profile path--options.addArguments("user-data-dir=C:/Users/user_name/AppData/Local/Google/Chrome/User Data/Default"); 
+    driver = new ChromeDriver(capability);
