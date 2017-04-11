@@ -14,7 +14,7 @@ http://sqa.stackexchange.com/questions/12892/how-to-send-basic-authentication-he
 DesiredCapabilities capability = DesiredCapabilities.chrome();
  System.setProperty("webdriver.chrome.driver", "C:/chromedriver.exe");
   capability.setCapability("chrome.switches", Arrays.asList("–disable-extensions"));
-   --capability.setCapability("chrome.binary", "C:/Users/user_name/AppData/Local/Google/Chrome/Application/chrome.exe"); 
+   --capability.setCapability("chrome.binary", "C:/Program Files (x86)/Google/Chrome/Application/chrome.exe"); 
    ChromeOptions options = new ChromeOptions();
     --profile path--options.addArguments("user-data-dir=C:/Users/user_name/AppData/Local/Google/Chrome/User Data/Default"); 
     driver = new ChromeDriver(capability);
