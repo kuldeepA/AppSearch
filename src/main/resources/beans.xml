@@ -10,5 +10,5 @@
 	<context:component-scan base-package="com.fji.run" />
  
 	<bean id="logger" class="com.fji.logger.LoggerClass"/>
-	
+	<!-- <bean id ="utils" class="com.fji.core.WaveUtils"/>-->
 </beans>
