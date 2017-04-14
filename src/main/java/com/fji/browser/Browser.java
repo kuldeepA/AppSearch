@@ -1,28 +1,18 @@
 package com.fji.browser;
 
 import java.util.Arrays;
-import java.util.Date;
-import java.util.HashMap;
 import java.util.LinkedHashMap;
-import java.util.LinkedList;
-import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
-
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
-import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.remote.DesiredCapabilities;
-import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.annotation.AnnotationConfigApplicationContext;
-import org.springframework.context.support.AbstractApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
-
 import com.fji.core.WaveUtils;
 
 public class Browser {
@@ -51,7 +41,7 @@ public class Browser {
 	
 	@Autowired
 	//WaveUtils utils;
-	public void readURL(WebDriver driver) {
+	public Map<Integer, String> readURL(WebDriver driver) {
 		
 		Map<Integer,String> map = new LinkedHashMap<Integer,String>();
 		
@@ -65,34 +55,50 @@ public class Browser {
 		Select select = new Select(dropdown);
 		select.selectByVisibleText("Descending");*/
 		
-		driver.manage().window().maximize();
+		//driver.manage().window().maximize();
 		//String s = driver.findElement(By.xpath("/html/body/form/div[8]/div/div[3]/div[2]/div[2]/div/div/table/tbody/tr[3]/td/table/tbody/tr/td[1]/table/tbody/tr/td/table/tbody/tr[2]/td/div/table[1]/tbody/tr/td/table/tbody/tr[1]/th[4]/div[1]/a")).getText();
 		//new WebDriverWait(driver, 5).until(ExpectedConditions.visibilityOfElementLocated(By.className("selectize-dropdown-content")));
-		for (int i=2; i<32; i++) {
+		//for (int i=2; i<32; i++) {
+		int count = 2;
+		int index = 2;try {
+		while(true) {		
 			
-			map.put(WaveUtils.getIntValue(driver.findElement(By.xpath("/html/body/form/div[8]/div/div[3]/div[2]/div[2]/div/div/table/tbody/tr[3]/td/table/tbody/tr/td[1]/table/tbody/tr/td/table/tbody/tr[2]/td/div/table[1]/tbody/tr/td/table/tbody/tr["+i+"]/td[3]/div[1]/a")).getText()) 
-					, (WaveUtils.getValue(driver.findElement(By.xpath("/html/body/form/div[8]/div/div[3]/div[2]/div[2]/div/div/table/tbody/tr[3]/td/table/tbody/tr/td[1]/table/tbody/tr/td/table/tbody/tr[2]/td/div/table[1]/tbody/tr/td/table/tbody/tr["+i+"]/td[4]/nobr")).getText() 
+			if ((driver.findElement(By.xpath("/html/body/form/div[8]/div/div[3]/div[2]/div[2]/div/div/table/tbody/tr[3]/td/table/tbody/tr/td[1]/table/tbody/tr/td/table/tbody/tr[2]/td/div/table[1]/tbody/tr/td/table/tbody/tr["+count+"]/td[3]/div[1]/a")).getText() != null)) {
+				map.put(WaveUtils.getIntValue(driver.findElement(By.xpath("/html/body/form/div[8]/div/div[3]/div[2]/div[2]/div/div/table/tbody/tr[3]/td/table/tbody/tr/td[1]/table/tbody/tr/td/table/tbody/tr[2]/td/div/table[1]/tbody/tr/td/table/tbody/tr["+count+"]/td[3]/div[1]/a")).getText()) 
+					, (WaveUtils.getValue(driver.findElement(By.xpath("/html/body/form/div[8]/div/div[3]/div[2]/div[2]/div/div/table/tbody/tr[3]/td/table/tbody/tr/td[1]/table/tbody/tr/td/table/tbody/tr[2]/td/div/table[1]/tbody/tr/td/table/tbody/tr["+count+"]/td[4]/nobr")).getText() 
 					, ""/*driver.findElement(By.xpath("/html/body/form/div[8]/div/div[3]/div[2]/div[2]/div/div/table/tbody/tr[3]/td/table/tbody/tr/td[1]/table/tbody/tr/td/table/tbody/tr[2]/td/div/table[1]/tbody/tr/td/table/tbody/tr["+i+"]/td[5]/span/a")).getText()*/)));
+				if(count != 31)
+					new WebDriverWait(driver, 3).until(ExpectedConditions.visibilityOfElementLocated(By.xpath("/html/body/form/div[8]/div/div[3]/div[2]/div[2]/div/div/table/tbody/tr[3]/td/table/tbody/tr/td[1]/table/tbody/tr/td/table/tbody/tr[2]/td/div/table[1]/tbody/tr/td/table/tbody/tr["+(count+1)+"]/td[4]/nobr")));
+				System.out.println(count);
+			} else {
+				System.out.println("loop break");
+				break;
+			}
+			if (count == 31 && index == 2) {
+				System.out.println("index"+count);
+				index = 3; // in next index got change to 3
+				count = 1; //in next page count will again start with 2
+				driver.findElement(By.xpath("/html/body/form/div[8]/div/div[3]/div[2]/div[2]/div/div/table/tbody/tr[3]/td/table/tbody/tr/td[1]/table/tbody/tr/td/table/tbody/tr[2]/td/div/table[2]/tbody/tr[3]/td/table/tbody/tr/td[2]/a")).click();
+			} else if (count == 31 && index == 3) {
+				count = 1; //in next page count will again start with 2
+				driver.findElement(By.xpath("/html/body/form/div[8]/div/div[3]/div[2]/div[2]/div/div/table/tbody/tr[3]/td/table/tbody/tr/td[1]/table/tbody/tr/td/table/tbody/tr[2]/td/div/table[2]/tbody/tr[3]/td/table/tbody/tr/td[3]/a")).click();
+			}			
+			
+			count++;
+		}
+		}
+		catch(org.openqa.selenium.NoSuchElementException e) {
+			
+		}
+		catch( org.openqa.selenium.TimeoutException tEx) {
 			
 		}
 		//Select dropdown = new Select(driver.findElement(By.xpath("/html/body/form/div[8]/div/div[3]/div[2]/div[2]/div/div/table/tbody/tr[3]/td/table/tbody/tr/td[1]/table/tbody/tr/td/table/tbody/tr[2]/td/div/table[1]/tbody/tr/td/table/tbody/tr[1]/th[4]/div[1]/a")));
-		System.out.println(map.size());
-		for (Entry<Integer, String> entry : map.entrySet()) {
+		//System.out.println(map.size());
+		/*for (Entry<Integer, String> entry : map.entrySet()) {
 			System.out.println(entry.getKey() + "--" +entry.getValue());
-		}
-		driver.findElement(By.xpath("/html/body/form/div[8]/div/div[3]/div[2]/div[2]/div/div/table/tbody/tr[3]/td/table/tbody/tr/td[1]/table/tbody/tr/td/table/tbody/tr[2]/td/div/table[2]/tbody/tr[3]/td/table/tbody/tr/td[2]/a")).click();
-	}
-	public static void main(String[] args) {
-		
-		//new Browser().openURL();
-		
-		//bro.openURL();
-		
-		//ApplicationContext context = new ClassPathXmlApplicationContext("beans.xml");
-		//AbstractApplicationContext context = new AnnotationConfigApplicationContext(WaveUtils.class);
-		//WaveUtils utils = (WaveUtils) context.getBean("utils");
-		Browser bro = new Browser();
-		bro.readURL(bro.openURL());
-		//context.close();
-	}
+		}*/
+		//driver.findElement(By.xpath("/html/body/form/div[8]/div/div[3]/div[2]/div[2]/div/div/table/tbody/tr[3]/td/table/tbody/tr/td[1]/table/tbody/tr/td/table/tbody/tr[2]/td/div/table[2]/tbody/tr[3]/td/table/tbody/tr/td[2]/a")).click();
+		return map;
+	}	
 }
