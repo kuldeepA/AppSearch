@@ -19,7 +19,7 @@ public class WaveUtils {
 				values = text.split("__");
 			else
 				values = text.split("_");
-		}System.out.println(values[0]+"  "+values[1]+"  "+values[2]);
+		}//System.out.println(values[0]+"  "+values[1]+"  "+values[2]);
 		
 		if (isNumeric(values[1]))
 			return Integer.parseInt(values[1]);

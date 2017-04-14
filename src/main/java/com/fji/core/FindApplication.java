@@ -38,27 +38,6 @@ public class FindApplication {
 				ewaveMap.put(key, "");
 		}
 		
-		/*Iterator<Integer> it = list.iterator();
-		while (it.hasNext()) {
-			
-			Integer i = it.next();	
-			if (appMap.containsKey(i)) {
-				
-				String[] value = appMap.get(i).split("-");				
-				if (value[0].equals("1.0"))
-					wave1Map.put(i, value[1]);
-				else if (value[0].equals("2.0"))
-					wave2Map.put(i, value[1]);
-				else if (value[0].equals("3.0"))
-					wave3Map.put(i, value[1]);
-				else if (value[0].equals("4.0"))
-					wave4Map.put(i, value[1]);
-				else if (value[0].equals("5.0"))
-					wave5Map.put(i, value[1]);
-			}
-			else
-				ewaveMap.put(i, "");				
-		}*/
 		waveMap.put("wave1", wave1Map);
 		waveMap.put("wave2", wave2Map);
 		waveMap.put("wave3", wave3Map);

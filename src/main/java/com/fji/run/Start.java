@@ -1,14 +1,26 @@
 package com.fji.run;
 
+import java.io.IOException;
 import java.util.Map;
 import java.util.Map.Entry;
 
 import com.fji.browser.Browser;
 import com.fji.excel.ReadWaveApp;
+import com.fji.read.Read;
 import com.fji.write.WriteRecords;
 import com.fji.core.FindApplication;
 
 public class Start {
+	
+	/*public Start() {
+		
+		try {
+			new Read().readApplication();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}*/
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub

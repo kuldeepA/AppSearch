@@ -8,6 +8,9 @@ import java.util.HashMap;
 import java.util.Iterator;
 import java.util.Map;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
+import com.fji.core.Constants;
+
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -21,7 +24,7 @@ public class ReadWaveApp {
 		Map<Integer, String> map = new HashMap<Integer, String>();
 		try {
 			
-			InputStream excelFile = new FileInputStream("C:" + File.separator+ "Master Data Validation Report.xlsx");
+			InputStream excelFile = new FileInputStream(Constants.APP_MASTERDATAVALIDATION);
 			workbook = new XSSFWorkbook(excelFile);
 			Sheet datatypeSheet = workbook.getSheetAt(1);
 			Iterator<Row> iterator = datatypeSheet.iterator();
