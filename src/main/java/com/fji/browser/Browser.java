@@ -34,8 +34,8 @@ public class Browser {
 	    // String URL = "https://"+ "singhkuld" + ":" + "Kedar@0706" + "@" + "us.sso.covisint.com/jsp/preLogin.jsp?host=https://fim.covisint.com&CT_ORIG_URL=%2Fap%2Fford%3Fip%3DWslIP%3D103.6.88.27%26TARGET%3Dhttps%3A%2F%2Fproj.extsp.ford.com%2F_layouts%2FFord%2Fcustomlogin.aspx%3FReturnUrl%3D%252fsites%252fsurveys%252f_layouts%252fAuthenticate.aspx%253fSource%253d%25252Fsites%25252Fsurveys%25252Fdefault%25252Easpx%25252F&ct_orig_uri=%2Fap%2Fford%3Fip%3DWslIP%3D103.6.88.27%26TARGET%3Dhttps%3A%2F%2Fproj.extsp.ford.com%2F_layouts%2FFord%2Fcustomlogin.aspx%3FReturnUrl%3D%252fsites%252fsurveys%252f_layouts%252fAuthenticate.aspx%253fSource%253d%25252Fsites%25252Fsurveys%25252Fdefault%25252Easpx%25252F";
 		//String URL = "";
 	    driver.get(Constants.URL);
-	    driver.findElement(By.id("user")).sendKeys("singhkuld");
-		driver.findElement(By.id("password")).sendKeys("Kedar@0706");
+	    driver.findElement(By.id("user")).sendKeys("****");
+		driver.findElement(By.id("password")).sendKeys("*****");
 	  
 	    driver.findElement(By.name("login")).submit();
 	 //   driver.manage().window().maximize();
