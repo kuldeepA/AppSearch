@@ -30,7 +30,7 @@ public class WaveUtils {
 	 //@Bean
 	public static String getValue(String text,String arg) {
 		
-		return text;
+		return arg+text;
 	}
 	
 	public static boolean isNumeric(String str) {

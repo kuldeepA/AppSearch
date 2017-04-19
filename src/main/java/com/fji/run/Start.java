@@ -43,6 +43,7 @@ public class Start {
 			System.out.println(entry.getKey() +" -- "+entry.getValue());
 		}*/
 		
+		//below code for wrting output into file
 		Map<String, Map<Integer, String>> map = new FindApplication().checkExists(urlMap,xlsMap);
 		new WriteRecords().writeRecords(map);
 		//context.close();
