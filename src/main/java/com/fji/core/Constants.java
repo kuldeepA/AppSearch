@@ -11,4 +11,5 @@ public class Constants {
 	public static String TMP_PATH = "C:"+File.separator+"Tmp.txt";
 	public static String APP_OUTPUT_FILE = "C:"+File.separator+"output.txt";
 	public static String APP_MASTERDATAVALIDATION = "C:" + File.separator+ "Master Data Validation Report.xlsx";
+	public static String DEMO = "";
 }
